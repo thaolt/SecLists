@@ -2201,6 +2201,7 @@ e2e/tests/admin/members/label-lifecycle.test.ts
 e2e/tests/admin/members/search-and-filter.test.ts
 e2e/tests/admin/members/import.test.ts
 e2e/tests/admin/analytics/newsletters.test.ts
+e2e/tests/admin/analytics/gift-link-journey.test.ts
 e2e/tests/admin/analytics/growth.test.ts
 e2e/tests/admin/analytics/web-traffic.test.ts
 e2e/tests/admin/analytics/web-filters.test.ts
@@ -2334,6 +2335,7 @@ e2e/helpers/pages/admin/analytics/analytics-web-traffic-page.ts
 e2e/helpers/pages/admin/analytics/analytics-newsletters-page.ts
 e2e/helpers/pages/admin/analytics/analytics-overview-page.ts
 e2e/helpers/pages/admin/analytics/post-analytics/index.ts
+e2e/helpers/pages/admin/analytics/post-analytics/post-analytics-overview-page.ts
 e2e/helpers/pages/admin/analytics/post-analytics/post-analytics-web-traffic-page.ts
 e2e/helpers/pages/admin/analytics/post-analytics/post-analytics-growth-page.ts
 e2e/helpers/pages/admin/analytics/post-analytics/post-analytics-page.ts
@@ -3600,7 +3602,8 @@ ghost/i18n/test/i18n-ignores.json
 ghost/i18n/test/utils.js
 ghost/i18n/package.json
 ghost/i18n/generate-context.js
-ghost/i18n/index.browser.js
+ghost/i18n/registry.d.ts
+ghost/i18n/index.d.ts
 ghost/i18n/locales/th/comments.json
 ghost/i18n/locales/th/search.json
 ghost/i18n/locales/th/signup-form.json
@@ -3914,9 +3917,16 @@ ghost/i18n/locales/lv/portal.json
 ghost/i18n/locales/lv/ghost.json
 ghost/i18n/i18next-parser.config.js
 ghost/i18n/lib/locale-data.json
+ghost/i18n/lib/esm-factory.mjs
 ghost/i18n/lib/i18n-core.js
 ghost/i18n/lib/i18n.js
-ghost/i18n/lib/i18n.browser.js
+ghost/i18n/lib/registry/comments.mjs
+ghost/i18n/lib/registry/signup-form.mjs
+ghost/i18n/lib/registry/portal.mjs
+ghost/i18n/lib/registry/search.mjs
+ghost/i18n/lib/registry/ghost.mjs
+ghost/i18n/lib/require-loader.js
+ghost/i18n/lib/i18n-core.mjs
 ghost/i18n/vitest.config.mjs
 ghost/i18n/index.js
 ghost/i18n/README.md
@@ -3989,7 +3999,7 @@ ghost/core/test/integration/settings/settings.test.js
 ghost/core/test/integration/exporter/exporter.test.js
 ghost/core/test/integration/jobs/update-check.test.js
 ghost/core/test/integration/lib/image/image-size-storage.test.ts
-ghost/core/test/integration/utils/minio.test.js
+ghost/core/test/integration/utils/minio.test.ts
 ghost/core/test/integration/services/member-welcome-emails-snapshot.test.js
 ghost/core/test/integration/services/offers-api.test.js
 ghost/core/test/integration/services/email-service/resume-interrupted-sends.test.js
@@ -4054,9 +4064,9 @@ ghost/core/test/utils/i18n-test-utils.js
 ghost/core/test/utils/url-service-utils.js
 ghost/core/test/utils/api.js
 ghost/core/test/utils/db-template.js
+ghost/core/test/utils/deferred.ts
 ghost/core/test/utils/mocks/modules.js
 ghost/core/test/utils/mocks/index.js
-ghost/core/test/utils/deferred.js
 ghost/core/test/utils/fixtures/settings/notyaml.md
 ghost/core/test/utils/fixtures/settings/newroutes.yaml
 ghost/core/test/utils/fixtures/settings/routes.yaml
@@ -4470,6 +4480,7 @@ ghost/core/test/unit/api/canary/utils/serializers/output/previews.test.js
 ghost/core/test/unit/api/canary/utils/serializers/output/all.test.js
 ghost/core/test/unit/api/canary/utils/serializers/input/comments.test.js
 ghost/core/test/unit/api/canary/utils/serializers/input/members.test.js
+ghost/core/test/unit/api/canary/utils/serializers/input/users.test.js
 ghost/core/test/unit/api/canary/utils/serializers/input/pages.test.js
 ghost/core/test/unit/api/canary/utils/serializers/input/posts.test.js
 ghost/core/test/unit/api/canary/utils/serializers/input/utils/settings-filter-type-group-mapper.test.js
@@ -4643,6 +4654,7 @@ ghost/core/test/unit/server/services/stats/content.test.js
 ghost/core/test/unit/server/services/stats/subscriptions.test.js
 ghost/core/test/unit/server/services/stats/referrers.test.js
 ghost/core/test/unit/server/services/gift-links/gift-link-token.test.ts
+ghost/core/test/unit/server/services/gift-links/actions.test.ts
 ghost/core/test/unit/server/services/link-tracking/link-click-tracking-service.test.js
 ghost/core/test/unit/server/services/link-tracking/post-link-repository.test.js
 ghost/core/test/unit/server/services/link-tracking/link-click-repository.test.js
@@ -5600,11 +5612,12 @@ ghost/core/core/server/services/stats/members-stats-service.js
 ghost/core/core/server/services/stats/subscription-stats-service.js
 ghost/core/core/server/services/stats/referrers-stats-service.js
 ghost/core/core/server/services/gift-links/index.ts
-ghost/core/core/server/services/gift-links/queries.ts
+ghost/core/core/server/services/gift-links/actions.ts
 ghost/core/core/server/services/gift-links/serializers.ts
+ghost/core/core/server/services/gift-links/schema.ts
 ghost/core/core/server/services/gift-links/service.ts
 ghost/core/core/server/services/gift-links/models.ts
-ghost/core/core/server/services/gift-links/database.ts
+ghost/core/core/server/services/gift-links/codec.ts
 ghost/core/core/server/services/gift-links/case-keys.ts
 ghost/core/core/server/services/link-tracking/link-click-repository.js
 ghost/core/core/server/services/link-tracking/link-click-tracking-service.js
@@ -6374,9 +6387,7 @@ ghost/core/core/server/data/migrations/utils/settings.js
 ghost/core/core/server/data/migrations/hooks/init/shutdown.js
 ghost/core/core/server/data/migrations/hooks/init/index.js
 ghost/core/core/server/data/migrations/hooks/migrate/shutdown.js
-ghost/core/core/server/data/migrations/hooks/migrate/after-each.js
 ghost/core/core/server/data/migrations/hooks/migrate/before.js
-ghost/core/core/server/data/migrations/hooks/migrate/before-each.js
 ghost/core/core/server/data/migrations/hooks/migrate/index.js
 ghost/core/core/server/data/db/database-state-manager.js
 ghost/core/core/server/data/db/backup.js
