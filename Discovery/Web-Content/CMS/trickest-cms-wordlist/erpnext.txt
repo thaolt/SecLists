@@ -168,6 +168,7 @@ banking/src/hooks/usePaymentEntryCalculations.tsx
 banking/src/hooks/use-mobile.ts
 banking/src/hooks/useCurrentCompany.ts
 banking/src/hooks/useDocType.ts
+banking/src/hooks/useResetScrollOnSearch.ts
 banking/src/hooks/useMultiFileUploadProgress.ts
 license.txt
 pyproject.toml
@@ -532,6 +533,7 @@ erpnext/accounts/doctype/financial_report_row/financial_report_row.json
 erpnext/accounts/doctype/period_closing_voucher/__init__.py
 erpnext/accounts/doctype/period_closing_voucher/period_closing_voucher.js
 erpnext/accounts/doctype/period_closing_voucher/period_closing_voucher.json
+erpnext/accounts/doctype/period_closing_voucher/period_closing_voucher_dashboard.py
 erpnext/accounts/doctype/period_closing_voucher/README.md
 erpnext/accounts/doctype/period_closing_voucher/period_closing_voucher.py
 erpnext/accounts/doctype/period_closing_voucher/test_period_closing_voucher.py
@@ -2500,7 +2502,6 @@ erpnext/patches/v16_0/set_reporting_currency.py
 erpnext/patches/v16_0/migrate_address_contact_custom_fields.py
 erpnext/patches/v16_0/rename_subcontracted_quantity.py
 erpnext/patches/v16_0/update_account_categories_for_existing_accounts.py
-erpnext/patches/v16_0/repair_work_order_material_transfer.py
 erpnext/patches/v16_0/add_new_stock_entry_types.py
 erpnext/patches/v16_0/fix_subcontracting_titles.py
 erpnext/patches/v16_0/__init__.py
@@ -2509,6 +2510,7 @@ erpnext/patches/v16_0/access_control_for_project_users.py
 erpnext/patches/v16_0/remove_payables_receivables_workspace.py
 erpnext/patches/v16_0/set_supplier_quotation_order_status.py
 erpnext/patches/v16_0/set_invoice_type_in_pos_settings.py
+erpnext/patches/v16_0/recalculate_holiday_list_totals.py
 erpnext/patches/v16_0/add_currency_to_blanket_orders.py
 erpnext/patches/v16_0/add_portal_redirects.py
 erpnext/patches/v16_0/uom_category.py
@@ -3185,6 +3187,7 @@ erpnext/manufacturing/doctype/production_plan/test_production_plan.py
 erpnext/manufacturing/doctype/production_plan/__init__.py
 erpnext/manufacturing/doctype/production_plan/production_plan_list.js
 erpnext/manufacturing/doctype/production_plan/production_plan.json
+erpnext/manufacturing/doctype/production_plan/test_work_order_quantities.py
 erpnext/manufacturing/doctype/production_plan/mapper.py
 erpnext/manufacturing/doctype/production_plan/services/__init__.py
 erpnext/manufacturing/doctype/production_plan/services/work_order_planning.py
@@ -3195,6 +3198,7 @@ erpnext/manufacturing/doctype/production_plan/services/bom_explosion.py
 erpnext/manufacturing/doctype/production_plan/services/sub_assembly_queries.py
 erpnext/manufacturing/doctype/production_plan/services/material_request.py
 erpnext/manufacturing/doctype/production_plan/services/planning_queries.py
+erpnext/manufacturing/doctype/production_plan/services/work_order_quantities.py
 erpnext/manufacturing/doctype/production_plan/production_plan.js
 erpnext/manufacturing/doctype/production_plan/production_plan_dashboard.py
 erpnext/manufacturing/doctype/production_plan/production_plan.py
@@ -3259,7 +3263,6 @@ erpnext/manufacturing/doctype/work_order/README.md
 erpnext/manufacturing/doctype/work_order/work_order.js
 erpnext/manufacturing/doctype/work_order/work_order_preview.html
 erpnext/manufacturing/doctype/work_order/test_work_order.py
-erpnext/manufacturing/doctype/work_order/services/material_coverage.py
 erpnext/manufacturing/doctype/work_order/services/__init__.py
 erpnext/manufacturing/doctype/work_order/services/status.py
 erpnext/manufacturing/doctype/work_order/services/required_items.py
@@ -3978,6 +3981,7 @@ erpnext/buying/report/supplier_quotation_comparison/supplier_quotation_compariso
 erpnext/buying/report/supplier_quotation_comparison/supplier_quotation_comparison.html
 erpnext/buying/report/supplier_quotation_comparison/supplier_quotation_comparison.py
 erpnext/buying/form_tour/supplier_form_tour/supplier_form_tour.json
+erpnext/buying/test_utils.py
 erpnext/buying/module_onboarding/buying_onboarding/buying_onboarding.json
 erpnext/buying/sidebar/buying/buying.json
 erpnext/buying/onboarding_step/create_item/create_item.json
@@ -4008,6 +4012,7 @@ erpnext/controllers/print_settings.py
 erpnext/controllers/tests/__init__.py
 erpnext/controllers/tests/test_distributed_discount.py
 erpnext/controllers/tests/test_qty_based_taxes.py
+erpnext/controllers/tests/test_ledger_preview.py
 erpnext/controllers/tests/test_taxes_and_totals.py
 erpnext/controllers/tests/test_sales_and_purchase_return.py
 erpnext/controllers/tests/test_item_wise_inventory_account.py
@@ -5318,6 +5323,7 @@ erpnext/public/js/utils/serial_no_batch_selector.js
 erpnext/public/js/utils/item_selector.js
 erpnext/public/js/utils/sales_common.js
 erpnext/public/js/utils/customer_quick_entry.js
+erpnext/public/js/utils/item_quick_entry.js
 erpnext/public/js/utils/landed_taxes_and_charges_common.js
 erpnext/public/js/utils/draft_link_guard.js
 erpnext/public/js/utils/serial_batch_inline_editor.js

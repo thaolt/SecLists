@@ -4403,6 +4403,7 @@ application/Espo/Core/Templates/Controllers/Base.php
 application/Espo/Core/Templates/Controllers/BasePlus.php
 application/Espo/Core/ApplicationUser.php
 application/Espo/Core/Api/MiddlewareProvider.php
+application/Espo/Core/Api/ConfigDataProvider.php
 application/Espo/Core/Api/ResponseComposer.php
 application/Espo/Core/Api/AuthBuilder.php
 application/Espo/Core/Api/Response.php
@@ -9272,6 +9273,7 @@ tests/integration/Espo/Tools/Pipeline/PipelineTest.php
 tests/integration/Espo/Tools/AppSecret/SecretProviderTest.php
 tests/integration/Espo/Tools/Import/ImportTest.php
 tests/integration/Espo/Tools/DynamicLogic/CascadingFieldsTest.php
+tests/integration/Espo/Tools/EntityTypeManager/EntityTypeManagerTest.php
 tests/integration/Espo/Tools/App/LanguageTest.php
 tests/integration/Espo/Tools/App/MetadataTest.php
 tests/integration/Espo/Tools/EmailTemplate/ProcessorTest.php
@@ -9411,6 +9413,7 @@ tests/unit/Espo/Core/Formula/EvaluatorTest.php
 tests/unit/Espo/Core/Formula/FormulaTest.php
 tests/unit/Espo/Core/Formula/ParserTest.php
 tests/unit/Espo/Core/Formula/ArgumentListTest.php
+tests/unit/Espo/Core/Api/ErrorOutputTest.php
 tests/unit/Espo/Core/Api/RequestTest.php
 tests/unit/Espo/Core/Api/AuthTest.php
 tests/unit/Espo/Core/Api/ResponseTest.php
